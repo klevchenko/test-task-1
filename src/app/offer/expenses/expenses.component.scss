@@ -1,0 +1,23 @@
+.w-100{
+  width: 100%;
+}
+
+.mat-toolbar.mat-toolbar-single-row{
+  justify-content: space-between;
+}
+
+.expenses-card{
+  display: flex;
+
+  &-label{
+    width: auto;
+    padding: 10px;
+    margin-left: 5px;
+  }
+
+  &-data{
+    width: 100%;
+    flex: auto;
+  }
+
+}

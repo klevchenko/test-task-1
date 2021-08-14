@@ -1,0 +1,44 @@
+.mat-toolbar.mat-toolbar-single-row{
+  justify-content: space-between;
+}
+
+.generalForm{
+  section{
+    margin-bottom: 5px;
+  }
+
+  .showMode{
+    section{
+
+      display: flex;
+      align-content: center;
+
+      .label{
+        background: whitesmoke;
+        width: 20vw;
+        padding: 10px;
+      }
+
+      .value{
+        background: whitesmoke;
+        width: auto;
+        padding: 10px;
+        flex: auto;
+        margin-left: 5px;
+
+        img{
+          display: block;
+          width: auto;
+          height: auto;
+          max-width: 100px;
+        }
+      }
+    }
+  }
+
+  .ico{
+    max-width: 100px;
+    width: auto;
+    height: auto;
+  }
+}

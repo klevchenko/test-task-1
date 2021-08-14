@@ -1,0 +1,105 @@
+<form class="generalForm" [formGroup]="generalForm" (ngSubmit)="submit()">
+
+  <mat-toolbar>
+    <span>Настройки оффера</span>
+    <div>
+      <button mat-button *ngIf="!editMode" color="basic" (click)="onEdit()">Редактировать</button>
+      <button mat-button *ngIf="editMode" color="primary" type="submit">Сохранить</button>
+      <button mat-button *ngIf="editMode" color="warn" (click)="onCancel()">Отмена</button>
+    </div>
+  </mat-toolbar>
+
+  <br>
+
+  <mat-card>
+
+    <div class="showMode" *ngIf="!editMode">
+
+      <section>
+        <div class="label">Иконка</div>
+        <div class="value">
+          <img *ngIf="filePath && filePath !== ''" [src]="filePath" [alt]="generalForm.value.name">
+          <span *ngIf="!filePath || filePath === ''">--</span>
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Шаблон</div>
+        <div class="value">
+          {{this.generalForm.value.template ? this.generalForm.value.template?._fileNames : '--'}}
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Языки</div>
+        <div class="value">
+          {{this.generalForm.value.language ? this.generalForm.value.language?._fileNames : '--'}}
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Время действия</div>
+        <div class="value">
+          {{this.generalForm.value.timeOfAction ? this.generalForm.value.timeOfAction : '--'}}
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Доступен офлайн</div>
+        <div class="value">
+          {{this.generalForm.value.offline ? 'Да' : 'Нет'}}
+        </div>
+      </section>
+
+    </div>
+
+    <div *ngIf="editMode">
+
+      <section *ngIf="filePath && filePath !== ''">
+        <img [className]="'ico'" [src]="filePath" [alt]="generalForm.value.name">
+        <button mat-button color="warn" (click)="removeImg()">Удалить иконку</button>
+      </section>
+
+      <section *ngIf="!filePath || filePath === ''">
+        <mat-form-field appearance="fill" [className]="'w-100'">
+          <mat-label>Иконка</mat-label>
+          <ngx-mat-file-input [accept]="'image/*'" (change)="imagePreview($event)" formControlName="img" placeholder="Иконка"></ngx-mat-file-input>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-form-field appearance="fill" [className]="'w-100'">
+          <mat-label>Шаблон</mat-label>
+          <ngx-mat-file-input [accept]="'.html'" formControlName="template" placeholder="Шаблон"></ngx-mat-file-input>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-form-field appearance="fill" [className]="'w-100'">
+          <mat-label>Языки</mat-label>
+          <ngx-mat-file-input [accept]="'.xml'" formControlName="language" placeholder="Языки"></ngx-mat-file-input>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-form-field appearance="fill" [className]="'w-100'">
+          <mat-label>Время действия</mat-label>
+          <input type="number" formControlName="timeOfAction" matInput>
+        </mat-form-field>
+      </section>
+
+      <section>
+        <mat-checkbox formControlName="offline">Доступен офлайн</mat-checkbox>
+      </section>
+
+    </div>
+
+  </mat-card>
+
+</form>
+
+<br>
+
+
+
+
